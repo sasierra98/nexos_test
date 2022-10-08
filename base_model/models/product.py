@@ -2,9 +2,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class Branch(models.Model):
-    gln_branch = models.PositiveIntegerField(
-        verbose_name=_('GLN branch'),
+class Product(models.Model):
+    gtin_product = models.PositiveIntegerField(
+        verbose_name=_('Gtin product'),
         primary_key=True,
         unique=True
     )
@@ -19,3 +19,6 @@ class Branch(models.Model):
         default=True
     )
 
+    unit_value = models.FloatField(
+        verbose_name=_('Unit value')
+    )
