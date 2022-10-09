@@ -19,12 +19,14 @@ from ninja import NinjaAPI
 
 from base_model.api.user import router as user_route
 from base_model.api.branch import router as branch_route
+from base_model.api.product import router as product_route
 
 
 api = NinjaAPI()
 
 api.add_router("/user", user_route)
 api.add_router("/branch", branch_route)
+api.add_router("/product", product_route)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
