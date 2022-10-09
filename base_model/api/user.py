@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from ninja import Router
-import json
+
+from json import loads
 
 from base_model.models import User
 from base_model.schemas import UserOut, UserUpdate
@@ -39,7 +40,7 @@ class UserAPI:
     @router.patch('/{int:user_id}', response=dict)
     def update_patch_user(request, user_id: int, payload: UserUpdate) -> dict:
         user = get_object_or_404(User, pk=user_id)
-        keys = [x for x in json.loads(request.body).keys()]
+        keys = [x for x in loads(request.body).keys()]
 
         for attr, value in payload.dict().items():
             if attr in keys:
