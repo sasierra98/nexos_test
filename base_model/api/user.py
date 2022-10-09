@@ -49,4 +49,9 @@ class UserAPI:
 
         return {"success": True}
 
+    @staticmethod
+    @router.delete('/{int:user_id}', response=dict)
+    def delete_user(request, user_id: int):
+        get_object_or_404(User, pk=user_id).delete()
+        return {"success": True}
 

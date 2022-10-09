@@ -4,7 +4,7 @@ from ninja import Router
 from json import loads
 
 from base_model.models import Branch
-from base_model.schemas.branch import BranchOut, BranchUpdate
+from base_model.schemas.branch import BranchOut
 
 router = Router()
 
@@ -17,14 +17,14 @@ class BranchAPI:
 
     @staticmethod
     @router.post('/create')
-    def create(request, user: BranchOut) -> dict:
-        Branch.objects.create(**user.dict())
-        return user.dict()
+    def create(request, branch: BranchOut) -> dict:
+        Branch.objects.create(**branch.dict())
+        return branch.dict()
 
     @staticmethod
     @router.get('/{int:branch_id}', response=BranchOut)
-    def get_user(request, user_id: int) -> Branch:
-        return get_object_or_404(Branch, pk=user_id)
+    def get_branch(request, branch_id: int) -> Branch:
+        return get_object_or_404(Branch, pk=branch_id)
 
     @staticmethod
     @router.put('/{int:branch_id}', response=dict)
@@ -49,4 +49,10 @@ class BranchAPI:
                 setattr(branch, attr, value)
         branch.save()
 
+        return {"success": True}
+
+    @staticmethod
+    @router.delete('/{int:branch_id}', response=dict)
+    def delete_user(request, branch_id: int):
+        get_object_or_404(Branch, pk=branch_id).delete()
         return {"success": True}
