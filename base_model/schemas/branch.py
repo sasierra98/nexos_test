@@ -8,8 +8,3 @@ class BranchOut(ModelSchema):
         model = Branch
         model_fields = '__all__'
 
-
-class BranchUpdate(ModelSchema):
-    class Config:
-        model = Branch
-        model_exclude = ['gln_branch']
