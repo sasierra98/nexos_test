@@ -24,9 +24,9 @@ from base_model.api.product import router as product_route
 
 api = NinjaAPI()
 
-api.add_router("/user", user_route)
-api.add_router("/branch", branch_route)
-api.add_router("/product", product_route)
+api.add_router("/user", user_route, tags=['User'])
+api.add_router("/branch", branch_route, tags=['Branch'])
+api.add_router("/product", product_route, tags=['Product'])
 
 urlpatterns = [
     path('admin/', admin.site.urls),
