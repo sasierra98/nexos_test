@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from base_model.models import BaseModelAbstract
 
-class Branch(models.Model):
+
+class Branch(BaseModelAbstract):
     gln_branch = models.PositiveIntegerField(
         verbose_name=_('GLN branch'),
         primary_key=True,

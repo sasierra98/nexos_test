@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from base_model.models import BaseModelAbstract
 
-class Product(models.Model):
+
+class Product(BaseModelAbstract):
     gtin_product = models.PositiveIntegerField(
         verbose_name=_('Gtin product'),
         primary_key=True,
