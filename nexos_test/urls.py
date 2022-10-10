@@ -20,6 +20,7 @@ from ninja import NinjaAPI
 from base_model.api.user import router as user_route
 from base_model.api.branch import router as branch_route
 from base_model.api.product import router as product_route
+from apps.inventory.api import router as inventory_route
 
 
 api = NinjaAPI()
@@ -27,6 +28,7 @@ api = NinjaAPI()
 api.add_router("/user", user_route, tags=['User'])
 api.add_router("/branch", branch_route, tags=['Branch'])
 api.add_router("/product", product_route, tags=['Product'])
+api.add_router("/inventory", inventory_route, tags=['Inventory'])
 
 urlpatterns = [
     path('admin/', admin.site.urls),
