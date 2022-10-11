@@ -5,7 +5,7 @@ from base_model.models import BaseModelAbstract
 
 
 class Branch(BaseModelAbstract):
-    gln_branch = models.PositiveIntegerField(
+    gln_branch = models.PositiveBigIntegerField(
         verbose_name=_('GLN branch'),
         primary_key=True,
         unique=True
@@ -13,7 +13,8 @@ class Branch(BaseModelAbstract):
 
     name = models.CharField(
         verbose_name=_('Name'),
-        max_length=50
+        max_length=50,
+        blank=True
     )
 
     is_active = models.BooleanField(
