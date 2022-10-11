@@ -30,3 +30,8 @@ class Inventory(BaseModelAbstract):
     quantity = models.IntegerField(
         verbose_name=_('Quantity')
     )
+
+    unit_value = models.FloatField(
+        verbose_name=_('Unit value'),
+        null=True
+    )
