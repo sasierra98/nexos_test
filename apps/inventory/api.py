@@ -1,11 +1,11 @@
-from json import loads
-
 from django.shortcuts import get_object_or_404
+
 from ninja import Router
+from json import loads
 
 from apps.inventory.schema import InventoryOut
 from apps.inventory.models import Inventory
-from base_model.models import User, Branch, Product
+
 
 router = Router()
 
@@ -20,9 +20,9 @@ class InventoryAPI:
     @router.post('/create')
     def create(request, branch: InventoryOut) -> dict:
         branch_dict = branch.dict()
-        branch_dict['user_id'] = branch_dict.pop('user')
-        branch_dict['branch_id'] = branch_dict.pop('branch')
-        branch_dict['product_id'] = branch_dict.pop('product')
+        branch_dict['gln_user_id'] = branch_dict.pop('gln_user')
+        branch_dict['gln_branch_id'] = branch_dict.pop('gln_branch')
+        branch_dict['gtin_product_id'] = branch_dict.pop('gtin_product')
         Inventory.objects.create(**branch_dict)
         return branch_dict
 
