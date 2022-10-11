@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from ninja import NinjaAPI
 
 from base_model.api.user import router as user_route
@@ -32,5 +32,6 @@ api.add_router("/inventory", inventory_route, tags=['Inventory'])
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', api.urls)
+    path('api/', api.urls),
+    path('blob_storage/', include("apps.blop_storage.urls"))
 ]
