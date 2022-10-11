@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
 
 class User(AbstractUser, PermissionsMixin):
-    gln_user = models.PositiveIntegerField(
+    gln_user = models.PositiveBigIntegerField(
         verbose_name=_('GLN client'),
         unique=True,
         primary_key=True
