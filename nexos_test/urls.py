@@ -13,13 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path, include
+
 from ninja import NinjaAPI
 
 from base_model.api.user import router as user_route
 from base_model.api.branch import router as branch_route
 from base_model.api.product import router as product_route
+from base_model.views import HomeView, Error404
 from apps.inventory.api import router as inventory_route
 
 
@@ -31,7 +32,9 @@ api.add_router("/product", product_route, tags=['Product'])
 api.add_router("/inventory", inventory_route, tags=['Inventory'])
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', HomeView.as_view()),
     path('api/', api.urls),
     path('blob_storage/', include("apps.blop_storage.urls"))
 ]
+
+handler404 = Error404.as_view()
