@@ -15,8 +15,7 @@ from apps.inventory.models import Inventory
 from base_model.models import User, Branch, Product
 from utils.azure_blop_storage.core import AzureBlobStorage
 
-
-connect_str = environ['CONNECTION_STRING']
+connect_str = 'DefaultEndpointsProtocol=https;AccountName=nexustest10;AccountKey=XcKnPTlxQL3X+naFbmAtQfvXVN2cA+qEvgtvMxiL3vVSDpD2/fPUkg2DGRA5b+sTmeSknuMSLLr7+AStVFDEgg==;EndpointSuffix=core.windows.net'
 
 
 class BlobStorageForm(forms.Form):
